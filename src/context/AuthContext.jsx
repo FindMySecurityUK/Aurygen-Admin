@@ -22,8 +22,8 @@ export const AuthProvider = ({ children }) => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      const adminUsername = process.env.REACT_APP_ADMIN_USERNAME;
-      const adminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
+      const adminUsername = import.meta.env.VITE_ADMIN_USERNAME;
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
       
       if (username === adminUsername && password === adminPassword) {
         const userData = {
