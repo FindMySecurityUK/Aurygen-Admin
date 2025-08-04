@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../ui/Button';
+import logo from '../../assets/logo.png';
 import './LoginPage.css';
 
 const LoginPage = () => {
@@ -42,7 +43,10 @@ const LoginPage = () => {
       <div className="login-container">
         <div className="login-card card">
           <div className="login-header">
-            <h1 className="login-title">Admin Dashboard</h1>
+            <div className="login-title-container">
+              <img src={logo} alt="Aurygen Logo" className="login-logo" />
+              <h1 className="login-title">dmin Dashboard</h1>
+            </div>
             <p className="login-subtitle">Sign in to access the admin panel</p>
           </div>
           

@@ -20,7 +20,7 @@ const MessagesPage = () => {
   const fetchMessages = async () => {
     try {
       setLoading(true);
-      const messagesRef = collection(db, 'messages');
+      const messagesRef = collection(db, 'contactForms');
       const q = query(messagesRef, orderBy('submittedAt', 'desc'));
       const querySnapshot = await getDocs(q);
       

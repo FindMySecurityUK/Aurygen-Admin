@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { MessageSquare, LogOut, Menu, X } from 'lucide-react';
 import { Button } from '../ui/Button';
+import aurygenLogo from '../../assets/logo.png';
 import './DashboardLayout.css';
 
 const DashboardLayout = ({ children, currentPage = 'messages' }) => {
@@ -43,6 +44,7 @@ const DashboardLayout = ({ children, currentPage = 'messages' }) => {
       <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-header">
           <div className="sidebar-logo">
+            <img src={aurygenLogo} alt="Aurygen Logo" className="logo-image" />
             <h2 className="logo-text">Admin Panel</h2>
           </div>
           <button 

@@ -38,6 +38,20 @@
   margin-bottom: 2rem;
 }
 
+.login-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.login-logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  margin-right: -0.5rem;
+}
+
 .login-title {
   font-size: 2rem;
   font-weight: 700;
