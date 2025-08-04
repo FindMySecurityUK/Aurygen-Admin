@@ -169,6 +169,25 @@
 }
 
 /* Responsive design */
+@media (max-width: 768px) {
+  .login-page {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 1.75rem;
+  }
+  
+  .login-title {
+    font-size: 1.875rem;
+  }
+  
+  .login-logo {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 @media (max-width: 480px) {
   .login-page {
     padding: 0.5rem;
@@ -180,5 +199,18 @@
   
   .login-title {
     font-size: 1.75rem;
+  }
+  
+  .login-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .login-title-container {
+    gap: 0.15rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
   }
 }
