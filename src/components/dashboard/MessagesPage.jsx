@@ -247,6 +247,7 @@ const MessagesPage = () => {
             </div>
           ) : (
             <div className="messages-table-container">
+              {/* Desktop/Tablet Table View */}
               <table className="messages-table">
                 <thead>
                   <tr>
@@ -297,6 +298,60 @@ const MessagesPage = () => {
                   ))}
                 </tbody>
               </table>
+              
+              {/* Mobile Card View */}
+              <div className="mobile-messages-list">
+                {messages.map((message) => (
+                  <div key={message.id} className="mobile-message-card">
+                    <div className="mobile-card-header">
+                      <div className="mobile-card-name">{message.name || 'N/A'}</div>
+                      <div className="mobile-card-status">
+                        {getStatusBadge(message.status)}
+                      </div>
+                    </div>
+                    
+                    <div className="mobile-card-info">
+                      <div className="mobile-info-row">
+                        <Mail size={16} className="mobile-info-icon" />
+                        <a href={`mailto:${message.email}`} className="mobile-info-text email-link">
+                          {message.email || 'N/A'}
+                        </a>
+                      </div>
+                      
+                      {message.companyName && (
+                        <div className="mobile-info-row">
+                          <Building size={16} className="mobile-info-icon" />
+                          <span className="mobile-info-text">{message.companyName}</span>
+                        </div>
+                      )}
+                      
+                      {message.budget && (
+                        <div className="mobile-info-row">
+                          <DollarSign size={16} className="mobile-info-icon" />
+                          <span className="mobile-info-text">{message.budget}</span>
+                        </div>
+                      )}
+                      
+                      <div className="mobile-info-row">
+                        <Calendar size={16} className="mobile-info-icon" />
+                        <span className="mobile-info-text">{formatDate(message.submittedAt)}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mobile-card-actions">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => openMessageDetail(message)}
+                        className="view-btn"
+                      >
+                        <Eye size={16} />
+                        <span>View Details</span>
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

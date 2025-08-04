@@ -435,6 +435,7 @@
   .page-header {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
   }
   
   .messages-table {
@@ -450,6 +451,10 @@
 @media (max-width: 768px) {
   .page-header-content h1 {
     font-size: 1.5rem;
+  }
+  
+  .page-header-content {
+    text-align: center;
   }
   
   .messages-table {
@@ -469,28 +474,160 @@
   .modal-content {
     margin: 0.5rem;
     max-height: 95vh;
+    width: calc(100% - 1rem);
   }
   
   .modal-header,
   .modal-body {
     padding: 1rem;
   }
+  
+  .messages-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media (max-width: 640px) {
-  /* Hide less important columns on mobile */
+  .messages-page {
+    padding: 0;
+  }
+  
+  .page-header {
+    padding: 1rem;
+    margin-bottom: 0;
+  }
+  
+  .page-header-content h1 {
+    font-size: 1.25rem;
+  }
+  
+  .page-subtitle {
+    font-size: 0.875rem;
+  }
+  
+  /* Mobile card layout for table */
+  .messages-table-container {
+    padding: 0 1rem;
+  }
+  
+  .messages-table {
+    display: none;
+  }
+  
+  .mobile-messages-list {
+    display: block;
+  }
+  
+  .mobile-message-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-message-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.1);
+  }
+  
+  .mobile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+  
+  .mobile-card-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+  }
+  
+  .mobile-card-status {
+    margin-left: 0.5rem;
+  }
+  
+  .mobile-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .mobile-info-icon {
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  
+  .mobile-info-text {
+    color: var(--text-secondary);
+    flex: 1;
+  }
+  
+  .mobile-card-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .modal-content {
+    margin: 0.25rem;
+    max-height: 98vh;
+    width: calc(100% - 0.5rem);
+  }
+  
+  .modal-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .modal-body {
+    padding: 0 1rem 1rem;
+  }
+  
+  .detail-item {
+    padding: 0.75rem 0;
+  }
+  
+  .project-details-content {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Hide mobile layout on larger screens */
+@media (min-width: 641px) {
+  .mobile-messages-list {
+    display: none;
+  }
+  
+  .messages-table {
+    display: table;
+  }
+  
+  /* Hide less important columns on smaller tablets */
   .messages-table th:nth-child(3),
   .messages-table td:nth-child(3),
   .messages-table th:nth-child(6),
   .messages-table td:nth-child(6) {
     display: none;
   }
-  
-  .name-cell {
-    min-width: 120px;
-  }
-  
-  .email-cell {
-    min-width: 150px;
+}
+
+@media (min-width: 769px) {
+  /* Show all columns on larger screens */
+  .messages-table th:nth-child(3),
+  .messages-table td:nth-child(3),
+  .messages-table th:nth-child(6),
+  .messages-table td:nth-child(6) {
+    display: table-cell;
   }
 }
