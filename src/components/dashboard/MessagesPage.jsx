@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import { Eye, Mail, Calendar, DollarSign, Building, User, ExternalLink, X } from 'lucide-react';
+import { Eye, Mail, Calendar, DollarSign, Building, User, ExternalLink, X, Phone } from 'lucide-react';
 import { Button } from '../ui/Button';
 import DashboardLayout from './DashboardLayout';
 import './MessagesPage.css';
@@ -121,6 +121,22 @@ const MessagesPage = () => {
               
               <div className="detail-item">
                 <div className="detail-label">
+                  <Phone size={16} />
+                  <span>Phone</span>
+                </div>
+                <div className="detail-value">
+                  {selectedMessage.phone ? (
+                    <a href={`tel:${selectedMessage.phone}`} className="phone-link">
+                      {selectedMessage.phone}
+                    </a>
+                  ) : (
+                    'N/A'
+                  )}
+                </div>
+              </div>
+              
+              <div className="detail-item">
+                <div className="detail-label">
                   <Building size={16} />
                   <span>Company</span>
                 </div>
@@ -173,13 +189,13 @@ const MessagesPage = () => {
                 <div className="detail-value">{selectedMessage.hearAbout || 'N/A'}</div>
               </div>
               
-              {selectedMessage.website && (
-                <div className="detail-item">
-                  <div className="detail-label">
-                    <ExternalLink size={16} />
-                    <span>Website</span>
-                  </div>
-                  <div className="detail-value">
+              <div className="detail-item">
+                <div className="detail-label">
+                  <ExternalLink size={16} />
+                  <span>Website</span>
+                </div>
+                <div className="detail-value">
+                  {selectedMessage.website ? (
                     <a 
                       href={selectedMessage.website} 
                       target="_blank" 
@@ -188,19 +204,19 @@ const MessagesPage = () => {
                     >
                       {selectedMessage.website}
                     </a>
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            {selectedMessage.projectDetails && (
-              <div className="project-details">
-                <h3 className="project-details-title">Project Details</h3>
-                <div className="project-details-content">
-                  {selectedMessage.projectDetails}
+                  ) : (
+                    'No website added'
+                  )}
                 </div>
               </div>
-            )}
+            </div>
+            
+            <div className="project-details">
+              <h3 className="project-details-title">Project Details</h3>
+              <div className="project-details-content">
+                {selectedMessage.projectDetails || 'No description added'}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -253,6 +269,7 @@ const MessagesPage = () => {
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Phone</th>
                     <th>Company</th>
                     <th>Budget</th>
                     <th>Status</th>
@@ -272,6 +289,15 @@ const MessagesPage = () => {
                         <a href={`mailto:${message.email}`} className="email-link">
                           {message.email || 'N/A'}
                         </a>
+                      </td>
+                      <td className="phone-cell">
+                        {message.phone ? (
+                          <a href={`tel:${message.phone}`} className="phone-link">
+                            {message.phone}
+                          </a>
+                        ) : (
+                          'N/A'
+                        )}
                       </td>
                       <td className="company-cell">{message.companyName || 'N/A'}</td>
                       <td className="budget-cell">
@@ -317,6 +343,15 @@ const MessagesPage = () => {
                           {message.email || 'N/A'}
                         </a>
                       </div>
+                      
+                      {message.phone && (
+                        <div className="mobile-info-row">
+                          <Phone size={16} className="mobile-info-icon" />
+                          <a href={`tel:${message.phone}`} className="mobile-info-text phone-link">
+                            {message.phone}
+                          </a>
+                        </div>
+                      )}
                       
                       {message.companyName && (
                         <div className="mobile-info-row">

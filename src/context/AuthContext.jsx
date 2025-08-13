@@ -15,6 +15,11 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useLocalStorage('isAuthenticated', false);
   const [user, setUser] = useLocalStorage('user', null);
   const [loading, setLoading] = useState(false);
+  
+  // Debug: Log authentication state changes
+  useEffect(() => {
+    console.log('Auth state changed:', { isAuthenticated, user: user?.username });
+  }, [isAuthenticated, user]);
 
   const login = async (username, password) => {
     setLoading(true);
@@ -33,8 +38,13 @@ export const AuthProvider = ({ children }) => {
           loginTime: new Date().toISOString()
         };
         
+        // Set user first, then authentication
         setUser(userData);
         setIsAuthenticated(true);
+        
+        // Force a small delay to ensure state is set
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
         return { success: true };
       } else {
         return { success: false, error: 'Invalid credentials' };

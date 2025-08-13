@@ -191,6 +191,21 @@
   text-decoration: underline;
 }
 
+.phone-cell {
+  min-width: 120px;
+}
+
+.phone-link {
+  color: var(--accent-tertiary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.phone-link:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}
+
 .company-cell {
   min-width: 150px;
   color: var(--text-secondary);
