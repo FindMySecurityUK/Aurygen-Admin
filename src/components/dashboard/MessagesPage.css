@@ -220,10 +220,6 @@
   color: var(--success);
 }
 
-.status-cell {
-  min-width: 100px;
-}
-
 .date-cell {
   min-width: 150px;
 }
@@ -631,8 +627,8 @@
   /* Hide less important columns on smaller tablets */
   .messages-table th:nth-child(3),
   .messages-table td:nth-child(3),
-  .messages-table th:nth-child(6),
-  .messages-table td:nth-child(6) {
+  .messages-table th:nth-child(5),
+  .messages-table td:nth-child(5) {
     display: none;
   }
 }
@@ -641,8 +637,8 @@
   /* Show all columns on larger screens */
   .messages-table th:nth-child(3),
   .messages-table td:nth-child(3),
-  .messages-table th:nth-child(6),
-  .messages-table td:nth-child(6) {
+  .messages-table th:nth-child(5),
+  .messages-table td:nth-child(5) {
     display: table-cell;
   }
 }
