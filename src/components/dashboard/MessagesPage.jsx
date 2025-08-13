@@ -272,7 +272,6 @@ const MessagesPage = () => {
                     <th>Phone</th>
                     <th>Company</th>
                     <th>Budget</th>
-                    <th>Status</th>
                     <th>Date</th>
                     <th>Actions</th>
                   </tr>
@@ -303,9 +302,6 @@ const MessagesPage = () => {
                       <td className="budget-cell">
                         <span className="budget-amount">{message.budget || 'N/A'}</span>
                       </td>
-                      <td className="status-cell">
-                        {getStatusBadge(message.status)}
-                      </td>
                       <td className="date-cell">
                         <span className="date-text">{formatDate(message.submittedAt)}</span>
                       </td>
@@ -331,9 +327,6 @@ const MessagesPage = () => {
                   <div key={message.id} className="mobile-message-card">
                     <div className="mobile-card-header">
                       <div className="mobile-card-name">{message.name || 'N/A'}</div>
-                      <div className="mobile-card-status">
-                        {getStatusBadge(message.status)}
-                      </div>
                     </div>
                     
                     <div className="mobile-card-info">
