@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../ui/Button';
 import logo from '../../assets/logo.png';
@@ -13,6 +14,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +32,13 @@ const LoginPage = () => {
     setError('');
 
     try {
-      await login(credentials.username, credentials.password);
+      const result = await login(credentials.username, credentials.password);
+      if (result.success) {
+        // Navigate to dashboard on successful login
+        navigate('/dashboard/messages', { replace: true });
+      } else {
+        setError(result.error || 'Login failed. Please check your credentials.');
+      }
     } catch (err) {
       setError(err.message || 'Login failed. Please check your credentials.');
     } finally {
